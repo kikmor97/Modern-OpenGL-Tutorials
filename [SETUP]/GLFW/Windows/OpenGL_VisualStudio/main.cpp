@@ -25,6 +25,9 @@ int main()
 
 	// Create a GLFWwindow object that we can use for GLFW's functions
 	GLFWwindow *window = glfwCreateWindow(WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr);
+	
+	int screenWidth, screenHeight;
+    	glfwGetFramebufferSize( window, &screenWidth, &screenHeight );
 
 	if (nullptr == window)
 	{
@@ -46,7 +49,7 @@ int main()
 	}
 
 	// Define the viewport dimensions
-	glViewport(0, 0, WIDTH, HEIGHT);
+	glViewport(0, 0, screenWidth, screenHeight);
 
 	// Game loop
 	while (!glfwWindowShouldClose(window))
