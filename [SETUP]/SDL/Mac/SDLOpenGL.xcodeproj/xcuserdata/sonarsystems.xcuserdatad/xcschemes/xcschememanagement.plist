@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>SFML_Mac.xcscheme</key>
+		<key>SDLOpenGL.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,7 +12,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>EE763FE11C97031500DD94F5</key>
+		<key>5B1656401D6B0A92009B1AF7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

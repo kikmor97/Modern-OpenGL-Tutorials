@@ -28,7 +28,7 @@ int main(int argc, char *argv[])
 	if (GLEW_OK != glewInit())
 	{
 		std::cout << "Failed to initialize GLEW" << std::endl;
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	// Define the viewport dimensions
@@ -56,5 +56,5 @@ int main(int argc, char *argv[])
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 
-	return 0;
+	return EXIT_SUCCESS;
 }

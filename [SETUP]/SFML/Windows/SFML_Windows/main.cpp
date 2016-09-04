@@ -23,7 +23,7 @@ int main()
 	if (GLEW_OK != glewInit())
 	{
 		std::cout << "Failed to initialize GLEW" << std::endl;
-		return -1;
+		return EXIT_FAILURE;
 	}
 
 	bool running = true;
@@ -53,5 +53,5 @@ int main()
 
 	window.close();
 
-	return 0;
+	return EXIT_SUCCESS;
 }
