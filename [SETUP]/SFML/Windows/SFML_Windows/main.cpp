@@ -1,57 +1,57 @@
 #include <iostream>
 
-// Link statically with GLEW
-#define GLEW_STATIC
-
-// Headers
 #include <GL/glew.h>
+
 #include <SFML/Window.hpp>
 
-int main()
+const GLint WIDTH = 800, HEIGHT = 600;
+
+int main( )
 {
 	sf::ContextSettings settings;
 	settings.depthBits = 24;
 	settings.stencilBits = 8;
 	settings.majorVersion = 3;
 	settings.minorVersion = 3;
+	settings.attributeFlags = sf::ContextSettings::Core;
 
-	sf::Window window(sf::VideoMode(800, 600, 32), "OpenGL", sf::Style::Titlebar | sf::Style::Close, settings);
+	sf::Window window( sf::VideoMode( WIDTH, HEIGHT, 32 ), "OpenGL SFML", sf::Style::Titlebar | sf::Style::Close, settings );
 
-	// Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
 	glewExperimental = GL_TRUE;
-	// Initialize GLEW to setup the OpenGL Function pointers
-	if (GLEW_OK != glewInit())
+
+	if ( GLEW_OK != glewInit( ) )
 	{
 		std::cout << "Failed to initialize GLEW" << std::endl;
+
 		return EXIT_FAILURE;
 	}
 
 	bool running = true;
-	while (running)
+
+	while ( running )
 	{
 		sf::Event windowEvent;
-		while (window.pollEvent(windowEvent))
+
+		while ( window.pollEvent( windowEvent ) )
 		{
-			switch (windowEvent.type)
+			switch ( windowEvent.type )
 			{
 			case sf::Event::Closed:
 				running = false;
+
 				break;
 			}
 		}
 
-		// Clear the screen to black
-		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClearColor( 0.2f, 0.3f, 0.3f, 1.0f );
+		glClear( GL_COLOR_BUFFER_BIT );
 
-		// Draw OpenGL
+		// draw OpenGL
 
-
-		// Swap buffers
-		window.display();
+		window.display( );
 	}
 
-	window.close();
+	window.close( );
 
 	return EXIT_SUCCESS;
 }
