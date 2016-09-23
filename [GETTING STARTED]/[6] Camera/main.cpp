@@ -178,9 +178,6 @@ int main( )
     SOIL_free_image_data( image );
     glBindTexture( GL_TEXTURE_2D, 0 ); // Unbind texture when done, so we won't accidentily mess up our texture.
     
-    glm::mat4 projection;
-    projection = glm::perspective(camera.GetZoom( ), (GLfloat)SCREEN_WIDTH/(GLfloat)SCREEN_HEIGHT, 0.1f, 1000.0f);
-    
     // Game loop
     while( !glfwWindowShouldClose( window ) )
     {
@@ -204,6 +201,9 @@ int main( )
         glActiveTexture( GL_TEXTURE0 );
         glBindTexture( GL_TEXTURE_2D, texture );
         glUniform1i( glGetUniformLocation( ourShader.Program, "ourTexture1" ), 0 );
+        
+        glm::mat4 projection;
+        projection = glm::perspective(camera.GetZoom( ), (GLfloat)SCREEN_WIDTH/(GLfloat)SCREEN_HEIGHT, 0.1f, 1000.0f);
         
         // Create camera transformation
         glm::mat4 view;
