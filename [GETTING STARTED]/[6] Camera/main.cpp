@@ -52,6 +52,15 @@ int main( )
     glfwWindowHint( GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE );
     
     GLFWwindow* window = glfwCreateWindow( WIDTH, HEIGHT, "LearnOpenGL", nullptr, nullptr ); // Windowed
+    
+    if ( nullptr == window )
+    {
+        std::cout << "Failed to create GLFW window" << std::endl;
+        glfwTerminate( );
+        
+        return EXIT_FAILURE;
+    }
+    
     glfwMakeContextCurrent( window );
     
     glfwGetFramebufferSize( window, &SCREEN_WIDTH, &SCREEN_HEIGHT );
@@ -64,9 +73,14 @@ int main( )
     // Options, removes the mouse cursor for a more immersive experience
     glfwSetInputMode( window, GLFW_CURSOR, GLFW_CURSOR_DISABLED );
     
-    // Initialize GLEW to setup the OpenGL Function pointers
+    // Set this to true so GLEW knows to use a modern approach to retrieving function pointers and extensions
     glewExperimental = GL_TRUE;
-    glewInit( );
+    // Initialize GLEW to setup the OpenGL Function pointers
+    if ( GLEW_OK != glewInit( ) )
+    {
+        std::cout << "Failed to initialize GLEW" << std::endl;
+        return EXIT_FAILURE;
+    }
     
     // Define the viewport dimensions
     glViewport( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
@@ -243,7 +257,7 @@ int main( )
     glDeleteBuffers( 1, &VBO );
     glfwTerminate( );
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 // Moves/alters the camera positions based on user input
