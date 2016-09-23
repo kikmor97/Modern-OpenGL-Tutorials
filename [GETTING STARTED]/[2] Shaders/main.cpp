@@ -38,7 +38,7 @@ int main( )
         std::cout << "Failed to create GLFW window" << std::endl;
         glfwTerminate( );
         
-        return -1;
+        return EXIT_FAILURE;
     }
     
     glfwMakeContextCurrent( window );
@@ -49,7 +49,7 @@ int main( )
     if ( GLEW_OK != glewInit( ) )
     {
         std::cout << "Failed to initialize GLEW" << std::endl;
-        return -1;
+        return EXIT_FAILURE;
     }
     
     // Define the viewport dimensions
@@ -113,7 +113,7 @@ int main( )
     // Terminate GLFW, clearing any resources allocated by GLFW.
     glfwTerminate( );
     
-    return 0;
+    return EXIT_SUCCESS;
 }
 
 
