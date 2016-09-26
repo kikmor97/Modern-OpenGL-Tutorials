@@ -237,6 +237,10 @@ int main( )
         glfwSwapBuffers( window );
     }
     
+    glDeleteVertexArrays( 1, &boxVAO );
+    glDeleteVertexArrays( 1, &lightVAO );
+    glDeleteBuffers( 1, &VBO );
+    
     // Terminate GLFW, clearing any resources allocated by GLFW.
     glfwTerminate( );
     return 0;
